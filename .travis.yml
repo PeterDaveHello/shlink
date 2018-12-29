@@ -23,6 +23,9 @@ install:
   - composer self-update
   - composer install --no-interaction
 
+before_script:
+  - sed -i "s/ --threads=4 / --threads=$(nproc) /g" composer.json
+
 script:
   - mkdir build
   - composer check
